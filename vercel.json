@@ -1,4 +1,6 @@
 {
+  "buildCommand": "mkdir -p public && cp index.html public/ && cp -r images public/ 2>/dev/null || true",
+  "outputDirectory": "public",
   "trailingSlash": false,
   "cleanUrls": true,
   "headers": [
