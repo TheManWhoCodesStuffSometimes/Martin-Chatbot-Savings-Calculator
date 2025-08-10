@@ -1,0 +1,28 @@
+{
+  "name": "uplink-roi-calculator",
+  "version": "1.0.0",
+  "description": "ROI Calculator for Uplink Robotics Martin AI Assistant - showing potential revenue impact from 24/7 customer engagement",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/uplink-roi-calculator.git"
+  },
+  "keywords": [
+    "roi-calculator",
+    "chatbot",
+    "automation",
+    "uplink-robotics",
+    "martin-ai",
+    "sales-calculator"
+  ],
+  "author": "IronForge Automations",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
