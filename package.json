@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "python -m http.server 8000",
     "start": "python -m http.server 8000",
-    "build": "echo 'Static site - no build required'"
+    "build": "mkdir -p public && cp index.html public/ && cp -r images public/ 2>/dev/null || true"
   },
   "repository": {
     "type": "git",
