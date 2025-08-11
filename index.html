@@ -437,40 +437,7 @@
             font-size: 16px;
         }
 
-        /* ====== PACKAGE SELECTION ====== */
-        .package-selector {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .package-btn {
-            padding: 12px 24px;
-            border: 2px solid #333333;
-            background: #1a1a1a;
-            color: #FFFFFF;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .package-btn:hover {
-            border-color: #6AD972;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(106, 217, 114, 0.3);
-        }
-
-        .package-btn.active {
-            background: #6AD972;
-            border-color: #6AD972;
-            color: #000000;
-            box-shadow: 0 4px 15px rgba(106, 217, 114, 0.4);
-        }
+        /* ====== ROI SECTION ====== */
         .roi-section {
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
             color: #FFFFFF;
@@ -611,18 +578,26 @@
             </div>
 
             <div class="input-group">
-                <label class="input-label">Average crawler production cost:</label>
+                <label class="input-label">Monthly website visitors:</label>
                 <div class="slider-container">
-                    <input type="range" min="500" max="3000" step="50" value="1250" class="slider" id="productionCost">
-                    <div class="slider-value recommended" id="productionValue">$1,250</div>
+                    <input type="range" min="50" max="500" step="25" value="200" class="slider" id="monthlyVisitors">
+                    <div class="slider-value recommended" id="visitorsValue">200 visitors</div>
                 </div>
             </div>
 
             <div class="input-group">
-                <label class="input-label">Additional crawlers sold monthly with Martin:</label>
+                <label class="input-label">Current conversion rate (visitors to sales):</label>
                 <div class="slider-container">
-                    <input type="range" min="1" max="10" step="1" value="2" class="slider" id="additionalSales">
-                    <div class="slider-value recommended" id="additionalSalesValue">2 crawlers</div>
+                    <input type="range" min="0.5" max="5" step="0.25" value="2" class="slider" id="currentConversion">
+                    <div class="slider-value recommended" id="conversionValue">2%</div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Percentage of inquiries that happen after hours:</label>
+                <div class="slider-container">
+                    <input type="range" min="20" max="60" step="5" value="40" class="slider" id="afterHoursPercent">
+                    <div class="slider-value recommended" id="afterHoursValue">40%</div>
                 </div>
             </div>
         </div>
@@ -630,32 +605,32 @@
         <!-- Current vs With Martin Comparison -->
         <div class="comparison-grid">
             <div class="comparison-card">
-                <h3>Current Monthly Profit</h3>
-                <div class="value-display" id="currentProfit">$4,690</div>
-                <div class="cost-value current-cost" id="currentDetails">Based on existing sales</div>
-                <p>Manual responses and missed opportunities</p>
-                <p>Limited after-hours engagement</p>
+                <h3>Current Situation</h3>
+                <div class="value-display" id="currentSales">4 sales/month</div>
+                <div class="cost-value current-cost" id="currentRevenue">$14,380/month</div>
+                <p>After-hours inquiries often go cold</p>
+                <p>Manual response delays lose potential customers</p>
             </div>
 
             <div class="comparison-card">
-                <h3>With Martin Monthly Profit</h3>
-                <div class="value-display" id="martinProfit">$9,380</div>
-                <div class="cost-value with-martin-cost" id="martinDetails">Including additional sales</div>
+                <h3>With Martin AI Assistant</h3>
+                <div class="value-display" id="martinSales">6 sales/month</div>
+                <div class="cost-value with-martin-cost" id="martinRevenue">$21,570/month</div>
                 <p>24/7 instant responses capture all leads</p>
                 <p>Smart qualification converts more prospects</p>
             </div>
         </div>
 
-        <!-- Profit Increase Highlight -->
+        <!-- Revenue Increase Highlight -->
         <div class="savings-highlight">
-            <h2>Additional Monthly Profit</h2>
-            <div class="savings-amount" id="profitIncrease">+$4,690</div>
-            <div class="savings-subtitle">potential monthly profit increase</div>
+            <h2>Additional Monthly Revenue</h2>
+            <div class="savings-amount" id="revenueIncrease">+$7,190</div>
+            <div class="savings-subtitle">potential monthly revenue increase</div>
             
             <div class="efficiency-boost">
                 <h4>Impact Analysis</h4>
-                <div class="conversion-display" id="additionalSalesDisplay">2 additional crawler sales</div>
-                <p>Martin's 24/7 availability and instant responses capture leads that would otherwise be lost to competitor response times or after-hours inquiries going cold.</p>
+                <div class="conversion-display" id="additionalSales">2 additional sales</div>
+                <p>Martin's 24/7 availability and instant responses could capture leads that would otherwise be lost to competitor response times or after-hours inquiries going cold.</p>
             </div>
         </div>
 
@@ -665,12 +640,6 @@
                 <span class="section-icon">💰</span>
                 Martin AI Assistant Investment
             </h2>
-
-            <div class="package-selector">
-                <button class="package-btn" id="basicBtn" data-package="basic">Basic Package</button>
-                <button class="package-btn active" id="enhancedBtn" data-package="enhanced">Enhanced Package</button>
-                <button class="package-btn" id="scaleBtn" data-package="scale">Scale Package</button>
-            </div>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -730,41 +699,33 @@
         <!-- ROI Analysis -->
         <div class="roi-section">
             <h2>Return on Investment Analysis</h2>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
-                <p style="font-size: 1.2em; opacity: 0.9;">
-                    Based on <span id="selectedPackageDisplay">Enhanced Package</span> over
-                </p>
-                <select id="timePeriodSelect" style="background: #1a1a1a; color: #6AD972; border: 2px solid #6AD972; border-radius: 8px; padding: 8px 15px; font-size: 16px; font-weight: bold;">
-                    <option value="1">1 Month</option>
-                    <option value="3">3 Months</option>
-                    <option value="6">6 Months</option>
-                    <option value="12">1 Year</option>
-                </select>
-            </div>
+            <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">
+                Based on just <span id="selectedPackage">Enhanced Package</span> converting 1 additional sale monthly
+            </p>
 
             <div class="roi-grid">
                 <div class="roi-card">
-                    <h3 id="additionalProfitLabel">Additional Monthly Profit</h3>
-                    <div class="roi-value roi-positive" id="roiProfit">+$4,690</div>
-                    <p>From Martin-generated sales</p>
+                    <h3>Additional Monthly Revenue</h3>
+                    <div class="roi-value roi-positive" id="roiRevenue">+$7,190</div>
+                    <p>From improved conversion rates</p>
                 </div>
 
                 <div class="roi-card">
-                    <h3 id="investmentLabel">Monthly Investment</h3>
+                    <h3>Monthly Investment</h3>
                     <div class="roi-value roi-negative" id="roiInvestment">-$300</div>
-                    <p id="packageCostLabel">Enhanced package cost</p>
+                    <p>Enhanced package monthly cost</p>
                 </div>
 
                 <div class="roi-card">
-                    <h3 id="netBenefitLabel">Net Monthly Benefit</h3>
-                    <div class="roi-value roi-positive" id="roiNet">+$4,390</div>
+                    <h3>Net Monthly Benefit</h3>
+                    <div class="roi-value roi-positive" id="roiNet">+$6,890</div>
                     <p>Pure profit increase</p>
                 </div>
 
                 <div class="roi-card">
                     <h3>ROI Percentage</h3>
-                    <div class="roi-value" style="color: #6AD972;" id="roiPercentage">1,463%</div>
-                    <p id="roiPeriodLabel">Monthly return on investment</p>
+                    <div class="roi-value" style="color: #6AD972;" id="roiPercentage">2,297%</div>
+                    <p>Monthly return on investment</p>
                 </div>
             </div>
             
